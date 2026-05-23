@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background: #f4f4f4;
+    }
+
+    .box {
+      background: white;
+      padding: 20px;
+      margin: 100px auto;
+      width: 300px;
+      border-radius: 10px;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px;
+    }
+
+    button {
+      padding: 10px;
+      background: green;
+      color: white;
+      border: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <h2>Register</h2>
+
+    <input type="text" id="newUser" placeholder="Username"><br>
+    <input type="password" id="newPass" placeholder="Password"><br>
+
+    <button onclick="register()">Register</button>
+
+    <p id="msg"></p>
+
+    <p>Already have an account? <a href="login.html">Login here</a></p>
+  </div>
+
+  <script>
+    function register() {
+      let user = document.getElementById("newUser").value.trim().toLowerCase();
+      let pass = document.getElementById("newPass").value.trim();
+
+      if(user === "" || pass === "") {
+        document.getElementById("msg").textContent = "Fill all fields";
+        return;
+      }
+
+      let users = JSON.parse(localStorage.getItem("users")) || [];
+
+      let exists = users.find(u => u.username === user);
+      if(exists) {
+        document.getElementById("msg").textContent = "Username already exists";
+        return;
+      }
+
+      users.push({ username: user, password: pass });
+      localStorage.setItem("users", JSON.stringify(users));
+
+      document.getElementById("msg").textContent = "Registered successfully!";
+    }
+  </script>
+
+</body>
+</html>

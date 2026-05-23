@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login - My Dad's Store</title>
+
+  <style>
+
+    body{
+      margin:0;
+      font-family:Arial;
+      background:#f5f7fb;
+    }
+
+    header{
+      background:#1565c0;
+      color:white;
+      padding:16px;
+      text-align:center;
+      font-size:26px;
+      font-weight:bold;
+    }
+
+    .banner{
+      background:linear-gradient(to right,#1565c0,#42a5f5);
+      color:white;
+      text-align:center;
+      padding:40px 20px;
+    }
+
+    .container{
+      width:360px;
+      margin:40px auto;
+      background:white;
+      padding:30px;
+      border-radius:18px;
+      box-shadow:0 5px 20px rgba(0,0,0,0.12);
+    }
+
+    h2{
+      text-align:center;
+      color:#1565c0;
+    }
+
+    input{
+      width:100%;
+      padding:13px;
+      margin-top:12px;
+      border-radius:10px;
+      border:1px solid #ccc;
+      box-sizing:border-box;
+    }
+
+    button{
+      width:100%;
+      padding:13px;
+      margin-top:16px;
+      border:none;
+      border-radius:10px;
+      background:#ffd54f;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    .switch{
+      text-align:center;
+      margin-top:18px;
+    }
+
+    .switch span{
+      color:#1565c0;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    .toast{
+      position:fixed;
+      top:20px;
+      right:20px;
+      background:#1565c0;
+      color:white;
+      padding:15px 20px;
+      border-radius:10px;
+      display:none;
+      z-index:999;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="toast" id="toast">
+  Success
+</div>
+
+<header>
+  My Dad's Store
+</header>
+
+<div class="banner">
+
+  <h2>
+    Welcome Back 🛒
+  </h2>
+
+  <p>
+    Login or create account
+  </p>
+
+</div>
+
+<div class="container">
+
+  <!-- REGISTER -->
+  <div id="registerBox">
+
+    <h2>Create Account</h2>
+
+    <input
+      type="text"
+      id="phone"
+      placeholder="Phone Number"
+    >
+
+    <input
+      type="text"
+      id="username"
+      placeholder="Username"
+    >
+
+    <input
+      type="password"
+      id="password"
+      placeholder="Password"
+    >
+
+    <button onclick="register()">
+      Create Account
+    </button>
+
+    <div class="switch">
+
+      Already have account?
+
+      <span onclick="showLogin()">
+        Login
+      </span>
+
+    </div>
+
+  </div>
+
+  <!-- LOGIN -->
+  <div
+    id="loginBox"
+    style="display:none;"
+  >
+
+    <h2>Login</h2>
+
+    <input
+      type="text"
+      id="loginUsername"
+      placeholder="Username"
+    >
+
+    <input
+      type="password"
+      id="loginPassword"
+      placeholder="Password"
+    >
+
+    <button onclick="login()">
+      Login
+    </button>
+
+    <div class="switch">
+
+      Don't have account?
+
+      <span onclick="showRegister()">
+        Register
+      </span>
+
+    </div>
+
+  </div>
+
+</div>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
+
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  setPersistence,
+  browserLocalPersistence
+}
+from "https://www.gstatic.com/firebasejs/12.12.1/firebase-auth.js";
+
+/* FIREBASE */
+const firebaseConfig = {
+
+  apiKey:
+  "AIzaSyB7nzhnwtID1Puepd5TQKuSccvOYUBFjYg",
+
+  authDomain:
+  "my-dads-store.firebaseapp.com",
+
+  projectId:
+  "my-dads-store",
+
+  storageBucket:
+  "my-dads-store.firebasestorage.app",
+
+  messagingSenderId:
+  "609604079602",
+
+  appId:
+  "1:609604079602:web:3332817f6dad84c657e56b"
+
+};
+
+const app =
+initializeApp(firebaseConfig);
+
+const auth =
+getAuth(app);
+
+/* ADMINS */
+const admins = [
+
+  {
+    username:"Ronald",
+    password:"Joy&sean!!"
+  },
+
+  {
+    username:"Sean",
+    password:"Joy&sean!!"
+  }
+
+];
+
+/* TOAST */
+function showToast(message){
+
+  const toast =
+  document.getElementById("toast");
+
+  toast.innerText =
+  message;
+
+  toast.style.display =
+  "block";
+
+  setTimeout(() => {
+
+    toast.style.display =
+    "none";
+
+  },2000);
+
+}
+
+/* REGISTER */
+window.register =
+async function(){
+
+  const phone =
+  document.getElementById("phone").value;
+
+  const username =
+  document.getElementById("username").value;
+
+  const password =
+  document.getElementById("password").value;
+
+  if(
+    !phone ||
+    !username ||
+    !password
+  ){
+    showToast("Fill all fields");
+    return;
+  }
+
+  try{
+
+    const fakeEmail =
+    username + "@store.com";
+
+    await setPersistence(
+      auth,
+      browserLocalPersistence
+    );
+
+    await createUserWithEmailAndPassword(
+      auth,
+      fakeEmail,
+      password
+    );
+
+    localStorage.setItem(
+      "username",
+      username
+    );
+
+    localStorage.setItem(
+      "isAdmin",
+      "false"
+    );
+
+    showToast(
+      "Account created!"
+    );
+
+    setTimeout(() => {
+
+      window.location.href =
+      "index.html";
+
+    },1000);
+
+  }
+
+  catch(err){
+
+    showToast(
+      err.message
+    );
+
+  }
+
+}
+
+/* LOGIN */
+window.login =
+async function(){
+
+  const username =
+  document.getElementById(
+    "loginUsername"
+  ).value;
+
+  const password =
+  document.getElementById(
+    "loginPassword"
+  ).value;
+
+  /* ADMIN LOGIN */
+  const adminFound =
+  admins.find(admin =>
+
+    admin.username === username &&
+    admin.password === password
+
+  );
+
+  if(adminFound){
+
+    localStorage.setItem(
+      "username",
+      username
+    );
+
+    localStorage.setItem(
+      "isAdmin",
+      "true"
+    );
+
+    showToast(
+      "Admin Login Success!"
+    );
+
+    setTimeout(() => {
+
+      window.location.href =
+      "admin.html";
+
+    },1000);
+
+    return;
+
+  }
+
+  /* USER LOGIN */
+  try{
+
+    const fakeEmail =
+    username + "@store.com";
+
+    await setPersistence(
+      auth,
+      browserLocalPersistence
+    );
+
+    await signInWithEmailAndPassword(
+      auth,
+      fakeEmail,
+      password
+    );
+
+    localStorage.setItem(
+      "username",
+      username
+    );
+
+    localStorage.setItem(
+      "isAdmin",
+      "false"
+    );
+
+    showToast(
+      "Login Success!"
+    );
+
+    setTimeout(() => {
+
+      window.location.href =
+      "index.html";
+
+    },1000);
+
+  }
+
+  catch(err){
+
+    showToast(
+      "Wrong username or password"
+    );
+
+  }
+
+}
+
+/* SWITCH */
+window.showLogin =
+function(){
+
+  document.getElementById(
+    "registerBox"
+  ).style.display =
+  "none";
+
+  document.getElementById(
+    "loginBox"
+  ).style.display =
+  "block";
+
+}
+
+window.showRegister =
+function(){
+
+  document.getElementById(
+    "registerBox"
+  ).style.display =
+  "block";
+
+  document.getElementById(
+    "loginBox"
+  ).style.display =
+  "none";
+
+}
+
+</script>
+
+</body>
+</html>
