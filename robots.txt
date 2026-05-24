@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://herpaciopathrick90-rgb.github.io/Right-Store/sitemap.xml
