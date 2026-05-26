@@ -139,295 +139,435 @@
   </script>
 
   <!-- 🎨 MAIN CSS -->
-  <style>
+ <style>
 
-    body{
-      margin:0;
-      font-family:Arial;
-      background:#f5f5f5;
-      transition:0.3s;
+  body{
+    margin:0;
+    font-family:Arial;
+    background:#f5f5f5;
+    transition:0.3s;
+  }
+
+  /* 🌙 DARK MODE */
+  .dark-mode{
+    background:#121212;
+    color:white;
+  }
+
+  .dark-mode header{
+    background:#000;
+  }
+
+  .dark-mode .sidebar,
+  .dark-mode .product-card,
+  .dark-mode .history-box,
+  .dark-mode .cart-sidebar{
+    background:#1e1e1e;
+    color:white;
+  }
+
+  .dark-mode .product-card{
+    border:2px solid #ffcc00;
+  }
+
+  /* 🌟 HERO SECTION */
+  .hero-section{
+    height:420px;
+    background:
+    linear-gradient(
+      rgba(0,0,0,0.5),
+      rgba(0,0,0,0.5)
+    ),
+    url('https://images.unsplash.com/photo-1542838132-92c53300491e');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+  }
+
+  .hero-overlay{
+    max-width:700px;
+    padding:20px;
+  }
+
+  .hero-overlay h1{
+    font-size:55px;
+    margin-bottom:10px;
+  }
+
+  .hero-overlay h2{
+    font-size:28px;
+    margin-bottom:15px;
+  }
+
+  .hero-overlay p{
+    font-size:18px;
+    line-height:1.6;
+  }
+
+  .hero-btn{
+    margin-top:20px;
+    padding:15px 30px;
+    border:none;
+    border-radius:30px;
+    background:#ffcc00;
+    color:#1565c0;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+  }
+
+  /* 🔵 HEADER */
+  header{
+    background:#1565c0;
+    padding:15px 30px;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    position:sticky;
+    top:0;
+    z-index:1000;
+  }
+
+  .logo-area h2{
+    margin:0;
+  }
+
+  .header-right{
+    display:flex;
+    align-items:center;
+    gap:15px;
+  }
+
+  /* 🔘 BUTTONS */
+  .login-btn{
+    background:#ffcc00;
+    border:none;
+    padding:12px 18px;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+    color:#1565c0;
+  }
+
+  /* 🛒 CART */
+  .cart-icon{
+    position:relative;
+    font-size:28px;
+    cursor:pointer;
+  }
+
+  .cart-count{
+    position:absolute;
+    top:-10px;
+    right:-10px;
+    background:red;
+    color:white;
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:12px;
+  }
+
+  /* 🔥 MAIN LAYOUT */
+  .store-layout{
+    display:flex;
+  }
+
+  /* 📂 SIDEBAR */
+  .sidebar{
+    width:260px;
+    background:white;
+    min-height:100vh;
+    padding:20px;
+    border-right:2px solid #eee;
+  }
+
+  .categories-box button{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:none;
+    border-radius:10px;
+    background:#1565c0;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+  }
+
+  /* 🛍 PRODUCTS AREA */
+  .products-side{
+    flex:1;
+    padding:20px;
+  }
+
+  /* 🔥 TABS */
+  .tabs{
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+  }
+
+  .tab-btn{
+    padding:12px 25px;
+    border:none;
+    border-radius:12px;
+    background:#ddd;
+    cursor:pointer;
+    font-weight:bold;
+  }
+
+  .active-tab{
+    background:#1565c0;
+    color:white;
+  }
+
+  /* 🔍 SEARCH + SORT */
+  .top-products-header{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:20px;
+    align-items:center;
+  }
+
+  .top-products-header input,
+  #sortSelect{
+    padding:12px;
+    border-radius:20px;
+    border:2px solid #1565c0;
+  }
+
+  /* 🛍 GRID */
+  .products-grid{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fill,minmax(220px,1fr));
+    gap:20px;
+  }
+
+  /* 🛍 PRODUCT CARD */
+  .product-card{
+    background:white;
+    border-radius:15px;
+    padding:15px;
+    text-align:center;
+    position:relative;
+    border:2px solid #1565c0;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+    transition:0.3s;
+  }
+
+  .product-card:hover{
+    transform:translateY(-5px);
+  }
+
+  .product-card img{
+    width:120px;
+    height:120px;
+    object-fit:cover;
+    border-radius:10px;
+  }
+
+  .best-seller{
+    position:absolute;
+    top:10px;
+    left:10px;
+    background:#ffcc00;
+    color:#1565c0;
+    padding:5px 10px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+  }
+
+  .flash-sale{
+    position:absolute;
+    top:45px;
+    left:10px;
+    background:red;
+    color:white;
+    padding:5px 10px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+  }
+
+  .price{
+    color:#1565c0;
+    font-size:20px;
+    font-weight:bold;
+  }
+
+  .rating{
+    color:orange;
+  }
+
+  .stock{
+    color:green;
+    font-weight:bold;
+  }
+
+  /* 🔥 QUANTITY */
+  .qty-box{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin:10px 0;
+  }
+
+  .qty-btn{
+    width:30px;
+    height:30px;
+    border:none;
+    border-radius:50%;
+    background:#1565c0;
+    color:white;
+    cursor:pointer;
+  }
+
+  /* 🔘 BUTTON */
+  .add-btn{
+    width:100%;
+    padding:12px;
+    margin-top:5px;
+    border:none;
+    border-radius:10px;
+    background:#ffcc00;
+    color:#1565c0;
+    font-weight:bold;
+    cursor:pointer;
+  }
+
+  /* 🛒 CART SIDEBAR */
+  .cart-sidebar{
+    position:fixed;
+    top:0;
+    right:-400px;
+    width:350px;
+    height:100vh;
+    background:white;
+    padding:20px;
+    transition:0.3s;
+    overflow:auto;
+    z-index:999;
+    box-shadow:-5px 0 20px rgba(0,0,0,0.2);
+  }
+
+  .cart-sidebar.active{
+    right:0;
+  }
+
+  /* 📜 HISTORY */
+  .history-box{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    border:2px solid #1565c0;
+  }
+
+  /* 🔔 TOAST */
+  .toast{
+    position:fixed;
+    top:20px;
+    right:20px;
+    background:#1565c0;
+    color:white;
+    padding:15px 20px;
+    border-radius:10px;
+    display:none;
+    z-index:9999;
+  }
+
+  /* 📱 MOBILE */
+  @media(max-width:768px){
+
+    .store-layout{
+      flex-direction:column;
     }
 
-    /* 🌙 DARK MODE */
-    .dark-mode{
-      background:#121212;
-      color:white;
+    .sidebar{
+      width:auto;
+      min-height:auto;
     }
 
-    .dark-mode header{
-      background:#000;
+    .hero-overlay h1{
+      font-size:38px;
     }
 
-    .dark-mode .sidebar,
-    .dark-mode .product-card,
-    .dark-mode .history-box,
-    .dark-mode .cart-sidebar{
-      background:#1e1e1e;
-      color:white;
-    }
-
-    .dark-mode .product-card{
-      border:2px solid #ffcc00;
-    }
-
-    /* 🔵 HEADER */
-    header{
-      background:#1565c0;
-      padding:15px 30px;
-      color:white;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      flex-wrap:wrap;
+    .hero-overlay h2{
+      font-size:22px;
     }
 
     .header-right{
-      display:flex;
-      align-items:center;
-      gap:15px;
-    }
-
-    /* 🔘 BUTTONS */
-    .login-btn{
-      background:#ffcc00;
-      border:none;
-      padding:12px 18px;
-      border-radius:10px;
-      font-weight:bold;
-      cursor:pointer;
-      color:#1565c0;
-    }
-
-    /* 🛒 CART */
-    .cart-icon{
-      position:relative;
-      font-size:28px;
-      cursor:pointer;
-    }
-
-    .cart-count{
-      position:absolute;
-      top:-10px;
-      right:-10px;
-      background:red;
-      color:white;
-      width:22px;
-      height:22px;
-      border-radius:50%;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      font-size:12px;
-    }
-
-    /* 🔥 LAYOUT */
-    .store-layout{
-      display:flex;
-    }
-
-    /* 📂 SIDEBAR */
-    .sidebar{
-      width:260px;
-      background:white;
-      min-height:100vh;
-      padding:20px;
-      border-right:2px solid #eee;
-    }
-
-    .categories-box button{
-      width:100%;
-      padding:12px;
       margin-top:10px;
-      border:none;
-      border-radius:10px;
-      background:#1565c0;
-      color:white;
-      font-weight:bold;
-      cursor:pointer;
-    }
-
-    /* 🛍 PRODUCTS */
-    .products-side{
-      flex:1;
-      padding:20px;
-    }
-
-    .top-products-header{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-bottom:20px;
-      align-items:center;
-    }
-
-    .top-products-header input,
-    #sortSelect{
-      padding:12px;
-      border-radius:20px;
-      border:2px solid #1565c0;
-    }
-
-    .products-grid{
-      display:grid;
-      grid-template-columns:
-      repeat(auto-fill,minmax(220px,1fr));
-      gap:20px;
-    }
-
-    /* 🛍 CARD */
-    .product-card{
-      background:white;
-      border-radius:15px;
-      padding:15px;
-      text-align:center;
-      position:relative;
-      border:2px solid #1565c0;
-      box-shadow:0 3px 10px rgba(0,0,0,0.1);
-    }
-
-    .product-card img{
-      width:120px;
-      height:120px;
-      object-fit:cover;
-      border-radius:10px;
-    }
-
-    .best-seller{
-      position:absolute;
-      top:10px;
-      left:10px;
-      background:#ffcc00;
-      color:#1565c0;
-      padding:5px 10px;
-      border-radius:20px;
-      font-size:12px;
-      font-weight:bold;
-    }
-
-    .flash-sale{
-      position:absolute;
-      top:45px;
-      left:10px;
-      background:red;
-      color:white;
-      padding:5px 10px;
-      border-radius:20px;
-      font-size:12px;
-      font-weight:bold;
-    }
-
-    .price{
-      color:#1565c0;
-      font-size:20px;
-      font-weight:bold;
-    }
-
-    .rating{
-      color:orange;
-    }
-
-    .stock{
-      color:green;
-      font-weight:bold;
-    }
-
-    .qty-box{
-      display:flex;
-      justify-content:center;
-      gap:10px;
-      margin:10px 0;
-    }
-
-    .qty-btn{
-      width:30px;
-      height:30px;
-      border:none;
-      border-radius:50%;
-      background:#1565c0;
-      color:white;
-      cursor:pointer;
-    }
-
-    .add-btn{
       width:100%;
-      padding:12px;
-      margin-top:5px;
-      border:none;
-      border-radius:10px;
-      background:#ffcc00;
-      color:#1565c0;
-      font-weight:bold;
-      cursor:pointer;
+      justify-content:flex-end;
+      flex-wrap:wrap;
     }
 
-    /* 🛒 CART SIDEBAR */
     .cart-sidebar{
-      position:fixed;
-      top:0;
-      right:-400px;
-      width:350px;
-      height:100vh;
-      background:white;
-      padding:20px;
-      transition:0.3s;
-      overflow:auto;
-      z-index:999;
-      box-shadow:-5px 0 20px rgba(0,0,0,0.2);
+      width:100%;
     }
 
-    .cart-sidebar.active{
-      right:0;
-    }
+  }
 
-    .history-box{
-      margin-top:40px;
-      background:white;
-      padding:20px;
-      border-radius:15px;
-      border:2px solid #1565c0;
-    }
-
-    .toast{
-      position:fixed;
-      top:20px;
-      right:20px;
-      background:#1565c0;
-      color:white;
-      padding:15px 20px;
-      border-radius:10px;
-      display:none;
-      z-index:9999;
-    }
-
-  </style>
-
+</style>
 </head>
 
 <body>
 
-<!-- 🧠 SEO CONTENT -->
-<section style="
-padding:20px;
-background:white;
-margin:20px;
-border-radius:15px;
-">
+<!-- 🌟 HERO / WELCOME SECTION -->
+<section class="hero-section">
 
-  <h1>
-    Right Wholesale Store
-  </h1>
+  <div class="hero-overlay">
 
-  <h2>
-    Online Grocery & Wholesale Store Philippines
-  </h2>
+    <h1>
+      Right Wholesale Store
+    </h1>
 
-  <p>
-    Right Wholesale Store offers affordable fruits,
-    snacks, drinks, and wholesale grocery products
-    in the Philippines with fast and easy online shopping.
-  </p>
+    <h2>
+      Online Grocery & Wholesale Store Philippines
+    </h2>
+
+    <p>
+      Shop affordable fruits, snacks, drinks,
+      and grocery products with fast and easy
+      online shopping in the Philippines.
+    </p>
+
+    <button
+      class="hero-btn"
+      onclick="window.scrollTo({
+        top:700,
+        behavior:'smooth'
+      })"
+    >
+      Shop Now
+    </button>
+
+  </div>
 
 </section>
+
+<!-- 🔵 HEADER -->
+<header>
+
+  <div class="logo-area">
+
+    <h2>
+      🛒 Right Store
+    </h2>
+
+  </div>
 
   <div class="header-right">
 
@@ -435,6 +575,7 @@ border-radius:15px;
       Welcome 👋
     </div>
 
+    <!-- 🛒 CART -->
     <div
       class="cart-icon"
       onclick="toggleCart()"
@@ -459,6 +600,7 @@ border-radius:15px;
       🌙 Dark
     </button>
 
+    <!-- 🚪 LOGOUT -->
     <button
       class="login-btn"
       onclick="logout()"
@@ -478,7 +620,7 @@ border-radius:15px;
   Added!
 </div>
 
-<!-- 🛒 CART -->
+<!-- 🛒 CART SIDEBAR -->
 <div
   class="cart-sidebar"
   id="cartSidebar"
@@ -531,6 +673,7 @@ border-radius:15px;
 
 </div>
 
+<!-- 🔥 MAIN STORE -->
 <div class="store-layout">
 
   <!-- 📂 SIDEBAR -->
@@ -562,57 +705,88 @@ border-radius:15px;
 
   </div>
 
-  <!-- 🛍 PRODUCTS -->
+  <!-- 🛍 MAIN CONTENT -->
   <div class="products-side">
 
-    <div class="top-products-header">
+    <!-- 🔥 TABS -->
+    <div class="tabs">
 
-      <input
-        type="text"
-        id="searchInput"
-        placeholder="Search..."
-        onkeyup="searchProducts()"
+      <button
+        class="tab-btn active-tab"
+        onclick="showTab(event,'productsTab')"
       >
+        Products
+      </button>
 
-      <!-- 🔥 SORT -->
-      <select
-        id="sortSelect"
-        onchange="sortProducts()"
+      <button
+        class="tab-btn"
+        onclick="showTab(event,'historyTab')"
       >
-
-        <option value="default">
-          Sort
-        </option>
-
-        <option value="lowHigh">
-          Price Low-High
-        </option>
-
-        <option value="highLow">
-          Price High-Low
-        </option>
-
-        <option value="name">
-          Name A-Z
-        </option>
-
-      </select>
+        Order History
+      </button>
 
     </div>
 
+    <!-- 🛍 PRODUCTS TAB -->
+    <div id="productsTab">
+
+      <div class="top-products-header">
+
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search..."
+          onkeyup="searchProducts()"
+        >
+
+        <!-- 🔥 SORT -->
+        <select
+          id="sortSelect"
+          onchange="sortProducts()"
+        >
+
+          <option value="default">
+            Sort
+          </option>
+
+          <option value="lowHigh">
+            Price Low-High
+          </option>
+
+          <option value="highLow">
+            Price High-Low
+          </option>
+
+          <option value="name">
+            Name A-Z
+          </option>
+
+        </select>
+
+      </div>
+
+      <div
+        class="products-grid"
+        id="productsContainer"
+      ></div>
+
+    </div>
+
+    <!-- 📜 HISTORY TAB -->
     <div
-      class="products-grid"
-      id="productsContainer"
-    ></div>
+      id="historyTab"
+      style="display:none;"
+    >
 
-    <!-- 📜 HISTORY -->
-    <div class="history-box">
+      <div class="history-box">
 
-      <h2>
-        Order History
-      </h2>
+        <h2>
+          Order History
+        </h2>
 
-      <div id="historyList"></div>
+        <div id="historyList"></div>
+
+      </div>
 
     </div>
 
@@ -620,6 +794,7 @@ border-radius:15px;
 
 </div>
 
+<!-- 🚀 JAVASCRIPT -->
 <script>
 
 /* 👤 USER */
@@ -685,6 +860,36 @@ JSON.parse(
 
 ];
 
+/* 🔥 TAB SWITCH */
+function showTab(event,tabId){
+
+  document.getElementById(
+    "productsTab"
+  ).style.display = "none";
+
+  document.getElementById(
+    "historyTab"
+  ).style.display = "none";
+
+  document.getElementById(
+    tabId
+  ).style.display = "block";
+
+  document
+  .querySelectorAll(".tab-btn")
+  .forEach(btn => {
+
+    btn.classList.remove(
+      "active-tab"
+    );
+
+  });
+
+  event.target.classList.add(
+    "active-tab"
+  );
+
+}
 /* 💾 SAVE PRODUCTS */
 function saveProducts(){
 
