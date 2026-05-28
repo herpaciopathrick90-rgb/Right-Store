@@ -141,6 +141,7 @@
 <!-- 🎨 MAIN CSS -->
 <style>
   
+```css
 /* 🌍 GLOBAL */
 body{
   margin:0;
@@ -183,6 +184,7 @@ body{
 /* 🌟 HERO SECTION */
 .hero-section{
   height:420px;
+
   background:
   linear-gradient(
     rgba(0,0,0,0.5),
@@ -224,12 +226,16 @@ body{
 .hero-btn{
   margin-top:20px;
   padding:15px 30px;
+
   border:none;
   border-radius:30px;
+
   background:#ffcc00;
   color:#1565c0;
+
   font-size:18px;
   font-weight:bold;
+
   cursor:pointer;
   transition:0.3s;
 }
@@ -242,6 +248,7 @@ body{
 header{
   background:#1565c0;
   color:white;
+
   padding:15px 30px;
 
   display:flex;
@@ -270,9 +277,11 @@ header{
   color:#1565c0;
 
   border:none;
+
   padding:12px 18px;
 
   border-radius:10px;
+
   font-weight:bold;
   cursor:pointer;
 
@@ -362,11 +371,15 @@ header{
 
 .tab-btn{
   padding:12px 25px;
+
   border:none;
   border-radius:12px;
+
   background:#ddd;
+
   cursor:pointer;
   font-weight:bold;
+
   transition:0.3s;
 }
 
@@ -386,6 +399,7 @@ header{
 .top-products-header input,
 #sortSelect{
   padding:12px;
+
   border-radius:20px;
   border:2px solid #1565c0;
 }
@@ -395,14 +409,17 @@ header{
   display:grid;
 
   grid-template-columns:
-  repeat(auto-fill,minmax(240px,1fr));
+  repeat(auto-fit,minmax(240px,1fr));
 
   gap:20px;
+
+  align-items:stretch;
 }
 
 /* 🛍 PRODUCT CARD */
 .product-card{
   background:white;
+
   border-radius:18px;
   padding:15px;
 
@@ -415,17 +432,44 @@ header{
   0 4px 15px rgba(0,0,0,0.1);
 
   transition:0.3s;
+
+  /* ✅ NEW FIXES */
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+
+  min-height:520px;
 }
 
 .product-card:hover{
   transform:translateY(-5px);
 }
 
+/* 🖼 PRODUCT IMAGE */
 .product-card img{
   width:160px;
   height:160px;
+
   object-fit:contain;
-  margin-bottom:10px;
+
+  margin:0 auto 10px auto;
+
+  display:block;
+}
+
+/* ✅ PRODUCT TITLE FIX */
+.product-card h3{
+  min-height:55px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  margin:10px 0;
+
+  font-size:18px;
 }
 
 /* 🏷 LABELS */
@@ -481,8 +525,8 @@ header{
   display:flex;
   justify-content:center;
   align-items:center;
-  gap:10px;
 
+  gap:10px;
   margin:10px 0;
 }
 
@@ -503,6 +547,7 @@ header{
 .add-btn{
   width:100%;
   padding:12px;
+
   margin-top:8px;
 
   border:none;
@@ -550,6 +595,7 @@ header{
 /* 📜 HISTORY */
 .history-box{
   background:white;
+
   padding:20px;
 
   border-radius:15px;
@@ -627,7 +673,12 @@ header{
     font-size:16px;
   }
 
+  .product-card{
+    min-height:auto;
+  }
+
 }
+```
 
 /* ✅ VERY IMPORTANT */
 </style>
