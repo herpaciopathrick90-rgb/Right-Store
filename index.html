@@ -139,389 +139,493 @@
   </script>
 
   <!-- 🎨 MAIN CSS -->
-<style>
+/* 🌍 GLOBAL */
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#f5f5f5;
+  transition:0.3s;
+  color:#222;
+}
 
-  body{
-    margin:0;
-    font-family:Arial;
-    background:#f5f5f5;
-    transition:0.3s;
+/* 🌙 DARK MODE */
+.dark-mode{
+  background:#121212;
+  color:white;
+}
+
+.dark-mode header{
+  background:#000;
+}
+
+.dark-mode .sidebar,
+.dark-mode .product-card,
+.dark-mode .history-box,
+.dark-mode .cart-sidebar,
+.dark-mode .footer{
+  background:#1e1e1e;
+  color:white;
+}
+
+.dark-mode .product-card{
+  border:2px solid #ffcc00;
+}
+
+.dark-mode input,
+.dark-mode select{
+  background:#222;
+  color:white;
+  border-color:#ffcc00;
+}
+
+/* 🌟 HERO SECTION */
+.hero-section{
+  height:420px;
+  background:
+  linear-gradient(
+    rgba(0,0,0,0.5),
+    rgba(0,0,0,0.5)
+  ),
+  url('../images/logo/banner.jpg');
+
+  background-size:cover;
+  background-position:center;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  text-align:center;
+  color:white;
+}
+
+.hero-overlay{
+  max-width:700px;
+  padding:20px;
+}
+
+.hero-overlay h1{
+  font-size:55px;
+  margin-bottom:10px;
+}
+
+.hero-overlay h2{
+  font-size:28px;
+  margin-bottom:15px;
+}
+
+.hero-overlay p{
+  font-size:18px;
+  line-height:1.6;
+}
+
+.hero-btn{
+  margin-top:20px;
+  padding:15px 30px;
+  border:none;
+  border-radius:30px;
+  background:#ffcc00;
+  color:#1565c0;
+  font-size:18px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.hero-btn:hover{
+  transform:scale(1.05);
+}
+
+/* 🔵 HEADER */
+header{
+  background:#1565c0;
+  color:white;
+  padding:15px 30px;
+
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+
+  position:sticky;
+  top:0;
+  z-index:999;
+}
+
+.logo-area h2{
+  margin:0;
+}
+
+.header-right{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+/* 🔘 BUTTONS */
+.login-btn{
+  background:#ffcc00;
+  color:#1565c0;
+
+  border:none;
+  padding:12px 18px;
+
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+.login-btn:hover{
+  transform:translateY(-2px);
+}
+
+/* 🛒 CART */
+.cart-icon{
+  position:relative;
+  font-size:28px;
+  cursor:pointer;
+}
+
+.cart-count{
+  position:absolute;
+  top:-10px;
+  right:-10px;
+
+  background:red;
+  color:white;
+
+  width:22px;
+  height:22px;
+
+  border-radius:50%;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  font-size:12px;
+}
+
+/* 🔥 MAIN LAYOUT */
+.store-layout{
+  display:flex;
+}
+
+/* 📂 SIDEBAR */
+.sidebar{
+  width:250px;
+  min-height:100vh;
+
+  background:white;
+  padding:20px;
+
+  border-right:2px solid #eee;
+}
+
+.categories-box button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+
+  border:none;
+  border-radius:10px;
+
+  background:#1565c0;
+  color:white;
+
+  font-weight:bold;
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+.categories-box button:hover{
+  background:#0d47a1;
+}
+
+/* 🛍 MAIN PRODUCTS */
+.products-side{
+  flex:1;
+  padding:20px;
+}
+
+/* 🔥 TABS */
+.tabs{
+  display:flex;
+  gap:10px;
+  margin-bottom:20px;
+}
+
+.tab-btn{
+  padding:12px 25px;
+  border:none;
+  border-radius:12px;
+  background:#ddd;
+  cursor:pointer;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+.active-tab{
+  background:#1565c0;
+  color:white;
+}
+
+/* 🔍 TOP BAR */
+.top-products-header{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:20px;
+}
+
+.top-products-header input,
+#sortSelect{
+  padding:12px;
+  border-radius:20px;
+  border:2px solid #1565c0;
+}
+
+/* 🛍 PRODUCTS GRID */
+.products-grid{
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fill,minmax(240px,1fr));
+
+  gap:20px;
+}
+
+/* 🛍 PRODUCT CARD */
+.product-card{
+  background:white;
+  border-radius:18px;
+  padding:15px;
+
+  text-align:center;
+  position:relative;
+
+  border:2px solid #1565c0;
+
+  box-shadow:
+  0 4px 15px rgba(0,0,0,0.1);
+
+  transition:0.3s;
+}
+
+.product-card:hover{
+  transform:translateY(-5px);
+}
+
+.product-card img{
+  width:160px;
+  height:160px;
+  object-fit:contain;
+  margin-bottom:10px;
+}
+
+/* 🏷 LABELS */
+.best-seller{
+  position:absolute;
+  top:10px;
+  left:10px;
+
+  background:#ffcc00;
+  color:#1565c0;
+
+  padding:5px 10px;
+
+  border-radius:20px;
+  font-size:12px;
+  font-weight:bold;
+}
+
+.flash-sale{
+  position:absolute;
+  top:45px;
+  left:10px;
+
+  background:red;
+  color:white;
+
+  padding:5px 10px;
+
+  border-radius:20px;
+  font-size:12px;
+  font-weight:bold;
+}
+
+/* 💰 PRODUCT INFO */
+.price{
+  color:#1565c0;
+  font-size:22px;
+  font-weight:bold;
+}
+
+.rating{
+  color:orange;
+  margin:5px 0;
+}
+
+.stock{
+  color:green;
+  font-weight:bold;
+}
+
+/* ➕➖ QUANTITY */
+.qty-box{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+
+  margin:10px 0;
+}
+
+.qty-btn{
+  width:32px;
+  height:32px;
+
+  border:none;
+  border-radius:50%;
+
+  background:#1565c0;
+  color:white;
+
+  cursor:pointer;
+}
+
+/* 🛒 ADD BUTTON */
+.add-btn{
+  width:100%;
+  padding:12px;
+  margin-top:8px;
+
+  border:none;
+  border-radius:10px;
+
+  background:#ffcc00;
+  color:#1565c0;
+
+  font-weight:bold;
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+.add-btn:hover{
+  opacity:0.9;
+}
+
+/* 🛒 CART SIDEBAR */
+.cart-sidebar{
+  position:fixed;
+  top:0;
+  right:-400px;
+
+  width:350px;
+  height:100vh;
+
+  background:white;
+  padding:20px;
+
+  overflow:auto;
+
+  transition:0.3s;
+
+  z-index:999;
+
+  box-shadow:
+  -5px 0 20px rgba(0,0,0,0.2);
+}
+
+.cart-sidebar.active{
+  right:0;
+}
+
+/* 📜 HISTORY */
+.history-box{
+  background:white;
+  padding:20px;
+
+  border-radius:15px;
+  border:2px solid #1565c0;
+}
+
+/* 🔔 TOAST */
+.toast{
+  position:fixed;
+  top:20px;
+  right:20px;
+
+  background:#1565c0;
+  color:white;
+
+  padding:15px 20px;
+
+  border-radius:10px;
+
+  display:none;
+
+  z-index:9999;
+}
+
+/* 🦶 FOOTER */
+.footer{
+  background:#1565c0;
+  color:white;
+
+  text-align:center;
+  padding:30px;
+
+  margin-top:40px;
+}
+
+/* 📱 MOBILE */
+@media(max-width:768px){
+
+  .store-layout{
+    flex-direction:column;
   }
 
-  /* 🌙 DARK MODE */
-  .dark-mode{
-    background:#121212;
-    color:white;
+  .sidebar{
+    width:auto;
+    min-height:auto;
   }
 
-  .dark-mode header{
-    background:#000;
+  .products-grid{
+    grid-template-columns:1fr;
   }
 
-  .dark-mode .sidebar,
-  .dark-mode .product-card,
-  .dark-mode .history-box,
-  .dark-mode .cart-sidebar{
-    background:#1e1e1e;
-    color:white;
-  }
-
-  .dark-mode .product-card{
-    border:2px solid #ffcc00;
-  }
-
-  /* 🌟 HERO SECTION */
-  .hero-section{
-    height:420px;
-    background:
-    linear-gradient(
-      rgba(0,0,0,0.5),
-      rgba(0,0,0,0.5)
-    ),
-    url('https://images.unsplash.com/photo-1542838132-92c53300491e');
-    background-size:cover;
-    background-position:center;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    color:white;
-  }
-
-  .hero-overlay{
-    max-width:700px;
-    padding:20px;
-  }
-
-  .hero-overlay h1{
-    font-size:55px;
-    margin-bottom:10px;
-  }
-
-  .hero-overlay h2{
-    font-size:28px;
-    margin-bottom:15px;
-  }
-
-  .hero-overlay p{
-    font-size:18px;
-    line-height:1.6;
-  }
-
-  .hero-btn{
-    margin-top:20px;
-    padding:15px 30px;
-    border:none;
-    border-radius:30px;
-    background:#ffcc00;
-    color:#1565c0;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
-  }
-
-  /* 🔵 HEADER */
-  header{
-    background:#1565c0;
-    padding:15px 30px;
-    color:white;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    position:sticky;
-    top:0;
-    z-index:1000;
-  }
-
-  .logo-area h2{
-    margin:0;
+  .top-products-header{
+    flex-direction:column;
   }
 
   .header-right{
-    display:flex;
-    align-items:center;
-    gap:15px;
-  }
-
-  /* 🔘 BUTTONS */
-  .login-btn{
-    background:#ffcc00;
-    border:none;
-    padding:12px 18px;
-    border-radius:10px;
-    font-weight:bold;
-    cursor:pointer;
-    color:#1565c0;
-  }
-
-  /* 🛒 CART */
-  .cart-icon{
-    position:relative;
-    font-size:28px;
-    cursor:pointer;
-  }
-
-  .cart-count{
-    position:absolute;
-    top:-10px;
-    right:-10px;
-    background:red;
-    color:white;
-    width:22px;
-    height:22px;
-    border-radius:50%;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-size:12px;
-  }
-
-  /* 🔥 MAIN LAYOUT */
-  .store-layout{
-    display:flex;
-  }
-
-  /* 📂 SIDEBAR */
-  .sidebar{
-    width:260px;
-    background:white;
-    min-height:100vh;
-    padding:20px;
-    border-right:2px solid #eee;
-  }
-
-  .categories-box button{
     width:100%;
-    padding:12px;
+    justify-content:center;
     margin-top:10px;
-    border:none;
-    border-radius:10px;
-    background:#1565c0;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
   }
 
-  /* 🛍 PRODUCTS AREA */
-  .products-side{
-    flex:1;
-    padding:20px;
-  }
-
-  /* 🔥 TABS */
-  .tabs{
-    display:flex;
-    gap:10px;
-    margin-bottom:20px;
-  }
-
-  .tab-btn{
-    padding:12px 25px;
-    border:none;
-    border-radius:12px;
-    background:#ddd;
-    cursor:pointer;
-    font-weight:bold;
-  }
-
-  .active-tab{
-    background:#1565c0;
-    color:white;
-  }
-
-  /* 🔍 SEARCH + SORT */
-  .top-products-header{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-bottom:20px;
-    align-items:center;
-  }
-
-  .top-products-header input,
-  #sortSelect{
-    padding:12px;
-    border-radius:20px;
-    border:2px solid #1565c0;
-  }
-
-  /* 🛍 GRID */
-  .products-grid{
-    display:grid;
-    grid-template-columns:
-    repeat(auto-fill,minmax(220px,1fr));
-    gap:20px;
-  }
-
-  /* 🛍 PRODUCT CARD */
-  .product-card{
-    background:white;
-    border-radius:15px;
-    padding:15px;
-    text-align:center;
-    position:relative;
-    border:2px solid #1565c0;
-    box-shadow:0 3px 10px rgba(0,0,0,0.1);
-    transition:0.3s;
-  }
-
-  .product-card:hover{
-    transform:translateY(-5px);
-  }
-
-  .product-card img{
-    width:120px;
-    height:120px;
-    object-fit:cover;
-    border-radius:10px;
-  }
-
-  .best-seller{
-    position:absolute;
-    top:10px;
-    left:10px;
-    background:#ffcc00;
-    color:#1565c0;
-    padding:5px 10px;
-    border-radius:20px;
-    font-size:12px;
-    font-weight:bold;
-  }
-
-  .flash-sale{
-    position:absolute;
-    top:45px;
-    left:10px;
-    background:red;
-    color:white;
-    padding:5px 10px;
-    border-radius:20px;
-    font-size:12px;
-    font-weight:bold;
-  }
-
-  .price{
-    color:#1565c0;
-    font-size:20px;
-    font-weight:bold;
-  }
-
-  .rating{
-    color:orange;
-  }
-
-  .stock{
-    color:green;
-    font-weight:bold;
-  }
-
-  /* 🔥 QUANTITY */
-  .qty-box{
-    display:flex;
-    justify-content:center;
-    gap:10px;
-    margin:10px 0;
-  }
-
-  .qty-btn{
-    width:30px;
-    height:30px;
-    border:none;
-    border-radius:50%;
-    background:#1565c0;
-    color:white;
-    cursor:pointer;
-  }
-
-  /* 🔘 BUTTON */
-  .add-btn{
-    width:100%;
-    padding:12px;
-    margin-top:5px;
-    border:none;
-    border-radius:10px;
-    background:#ffcc00;
-    color:#1565c0;
-    font-weight:bold;
-    cursor:pointer;
-  }
-
-  /* 🛒 CART SIDEBAR */
   .cart-sidebar{
-    position:fixed;
-    top:0;
-    right:-400px;
-    width:350px;
-    height:100vh;
-    background:white;
-    padding:20px;
-    transition:0.3s;
-    overflow:auto;
-    z-index:999;
-    box-shadow:-5px 0 20px rgba(0,0,0,0.2);
+    width:100%;
   }
 
-  .cart-sidebar.active{
-    right:0;
+  .hero-overlay h1{
+    font-size:38px;
   }
 
-  /* 📜 HISTORY */
-  .history-box{
-    background:white;
-    padding:20px;
-    border-radius:15px;
-    border:2px solid #1565c0;
+  .hero-overlay h2{
+    font-size:22px;
   }
 
-  /* 🔔 TOAST */
-  .toast{
-    position:fixed;
-    top:20px;
-    right:20px;
-    background:#1565c0;
-    color:white;
-    padding:15px 20px;
-    border-radius:10px;
-    display:none;
-    z-index:9999;
+  .hero-overlay p{
+    font-size:16px;
   }
 
-  /* 📱 MOBILE */
-  @media(max-width:768px){
-
-    .store-layout{
-      flex-direction:column;
-    }
-
-    .sidebar{
-      width:auto;
-      min-height:auto;
-    }
-
-    .hero-overlay h1{
-      font-size:38px;
-    }
-
-    .hero-overlay h2{
-      font-size:22px;
-    }
-
-    .header-right{
-      margin-top:10px;
-      width:100%;
-      justify-content:flex-end;
-      flex-wrap:wrap;
-    }
-
-    .cart-sidebar{
-      width:100%;
-    }
-
-  }
-
-</style>
-</head>
+}
 
 <body>
 
@@ -836,13 +940,17 @@ JSON.parse(
   localStorage.getItem("products")
 ) || [
 
+/* =========================
+   🍿 SNACKS (25)
+========================= */
+
 {
   id:1,
   name:"Oishi Prawn Crackers",
   price:18,
   stock:50,
   category:"snacks",
-  image:"images/oishi-prawn-crackers.png",
+  image:"images/snacks/oishi-prawn-crackers.png",
   rating:"⭐⭐⭐⭐⭐",
   qty:1
 },
@@ -853,7 +961,7 @@ JSON.parse(
   price:25,
   stock:40,
   category:"snacks",
-  image:"images/piattos-cheese.png",
+  image:"images/snacks/piattos-cheese.png",
   rating:"⭐⭐⭐⭐⭐",
   qty:1
 },
@@ -864,7 +972,7 @@ JSON.parse(
   price:20,
   stock:35,
   category:"snacks",
-  image:"images/nova-multigrain.png",
+  image:"images/snacks/nova-multigrain.png",
   rating:"⭐⭐⭐⭐",
   qty:1
 },
@@ -875,7 +983,7 @@ JSON.parse(
   price:19,
   stock:30,
   category:"snacks",
-  image:"images/chippy-bbq.png",
+  image:"images/snacks/chippy-bbq.png",
   rating:"⭐⭐⭐⭐⭐",
   qty:1
 },
@@ -886,7 +994,7 @@ JSON.parse(
   price:14,
   stock:60,
   category:"snacks",
-  image:"images/skyflakes.png",
+  image:"images/snacks/skyflakes.png",
   rating:"⭐⭐⭐⭐⭐",
   qty:1
 },
@@ -897,51 +1005,495 @@ JSON.parse(
   price:15,
   stock:45,
   category:"snacks",
-  image:"images/creamo.png",
+  image:"images/snacks/creamo.png",
   rating:"⭐⭐⭐⭐",
   qty:1
 },
 
 {
   id:7,
-  name:"Coca-Cola",
-  price:35,
-  stock:70,
-  category:"drinks",
-  image:"images/coca-cola.png",
-  rating:"⭐⭐⭐⭐⭐",
-  qty:1
-},
-
-{
-  id:8,
-  name:"Sprite",
-  price:32,
-  stock:50,
-  category:"drinks",
-  image:"images/sprite.png",
+  name:"Boy Bawang",
+  price:20,
+  stock:55,
+  category:"snacks",
+  image:"images/snacks/boy-bawang.png",
   rating:"⭐⭐⭐⭐",
   qty:1
 },
 
 {
-  id:9,
-  name:"Royal Orange",
-  price:30,
+  id:8,
+  name:"Clover Chips",
+  price:17,
   stock:40,
-  category:"drinks",
-  image:"images/royal-orange.png",
+  category:"snacks",
+  image:"images/snacks/clover-chips.png",
+  rating:"⭐⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:9,
+  name:"Loaded Crackers",
+  price:22,
+  stock:30,
+  category:"snacks",
+  image:"images/snacks/loaded-crackers.png",
   rating:"⭐⭐⭐⭐",
   qty:1
 },
 
 {
   id:10,
+  name:"Muncher",
+  price:16,
+  stock:45,
+  category:"snacks",
+  image:"images/snacks/muncher.png",
+  rating:"⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:11,
+  name:"Cheese Ring",
+  price:12,
+  stock:50,
+  category:"snacks",
+  image:"images/snacks/cheese-ring.png",
+  rating:"⭐⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:12,
+  name:"Moby Caramel",
+  price:18,
+  stock:30,
+  category:"snacks",
+  image:"images/snacks/moby-caramel.png",
+  rating:"⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:13,
+  name:"VCut",
+  price:23,
+  stock:35,
+  category:"snacks",
+  image:"images/snacks/vcut.png",
+  rating:"⭐⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:14,
+  name:"Roller Coaster",
+  price:19,
+  stock:40,
+  category:"snacks",
+  image:"images/snacks/roller-coaster.png",
+  rating:"⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:15,
+  name:"Dingdong Mixed Nuts",
+  price:25,
+  stock:30,
+  category:"snacks",
+  image:"images/snacks/dingdong-mixednuts.png",
+  rating:"⭐⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:16,
+  name:"Fudgee Bar",
+  price:10,
+  stock:80,
+  category:"snacks",
+  image:"images/snacks/fudgee-bar.png",
+  rating:"⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:17,
+  name:"Rebisco Crackers",
+  price:13,
+  stock:50,
+  category:"snacks",
+  image:"images/snacks/rebisco-crackers.png",
+  rating:"⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:18,
+  name:"Hansel Mocha",
+  price:14,
+  stock:45,
+  category:"snacks",
+  image:"images/snacks/hansel-mocha.png",
+  rating:"⭐⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:19,
+  name:"Presto Peanut",
+  price:12,
+  stock:40,
+  category:"snacks",
+  image:"images/snacks/presto-peanut.png",
+  rating:"⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:20,
+  name:"Bingo Orange",
+  price:11,
+  stock:45,
+  category:"snacks",
+  image:"images/snacks/bingo-orange.png",
+  rating:"⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:21,
+  name:"Dewberry",
+  price:15,
+  stock:30,
+  category:"snacks",
+  image:"images/snacks/dewberry.png",
+  rating:"⭐⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:22,
+  name:"Oreo Vanilla",
+  price:18,
+  stock:50,
+  category:"snacks",
+  image:"images/snacks/oreo-vanilla.png",
+  rating:"⭐⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:23,
+  name:"Chips Delight",
+  price:20,
+  stock:35,
+  category:"snacks",
+  image:"images/snacks/chips-delight.png",
+  rating:"⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:24,
+  name:"Cheese Crackers",
+  price:16,
+  stock:40,
+  category:"snacks",
+  image:"images/snacks/crackers-cheese.png",
+  rating:"⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:25,
+  name:"Pretzels",
+  price:22,
+  stock:30,
+  category:"snacks",
+  image:"images/snacks/pretzels.png",
+  rating:"⭐⭐⭐⭐⭐",
+  qty:1
+},
+
+/* =========================
+   🥤 DRINKS (25)
+========================= */
+
+{
+  id:26,
+  name:"Coca-Cola",
+  price:35,
+  stock:70,
+  category:"drinks",
+  image:"images/drinks/coca-cola.png",
+  rating:"⭐⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:27,
+  name:"Sprite",
+  price:32,
+  stock:50,
+  category:"drinks",
+  image:"images/drinks/sprite.png",
+  rating:"⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:28,
+  name:"Royal Orange",
+  price:30,
+  stock:40,
+  category:"drinks",
+  image:"images/drinks/royal-orange.png",
+  rating:"⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:29,
   name:"C2 Green Tea",
   price:28,
   stock:45,
   category:"drinks",
-  image:"images/c2-green-tea.png",
+  image:"images/drinks/c2-green-tea.png",
+  rating:"⭐⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:30,
+  name:"Pepsi",
+  price:33,
+  stock:55,
+  category:"drinks",
+  image:"images/drinks/pepsi.png",
+  rating:"⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:31,
+  name:"Mountain Dew",
+  price:34,
+  stock:50,
+  category:"drinks",
+  image:"images/drinks/mountain-dew.png",
+  rating:"⭐⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:32,
+  name:"Cobra Energy Drink",
+  price:25,
+  stock:45,
+  category:"drinks",
+  image:"images/drinks/cobra-energy.png",
+  rating:"⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:33,
+  name:"Sting Energy",
+  price:22,
+  stock:40,
+  category:"drinks",
+  image:"images/drinks/sting-energy.png",
+  rating:"⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:34,
+  name:"Gatorade Blue",
+  price:45,
+  stock:35,
+  category:"drinks",
+  image:"images/drinks/gatorade-blue.png",
+  rating:"⭐⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:35,
+  name:"Minute Maid Orange",
+  price:30,
+  stock:40,
+  category:"drinks",
+  image:"images/drinks/minute-maid-orange.png",
+  rating:"⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:36,
+  name:"Nestea Lemon",
+  price:28,
+  stock:50,
+  category:"drinks",
+  image:"images/drinks/nestea-lemon.png",
+  rating:"⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:37,
+  name:"Yakult",
+  price:15,
+  stock:80,
+  category:"drinks",
+  image:"images/drinks/yakult.png",
+  rating:"⭐⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:38,
+  name:"Delight Strawberry",
+  price:18,
+  stock:45,
+  category:"drinks",
+  image:"images/drinks/delight-strawberry.png",
+  rating:"⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:39,
+  name:"Chuckie",
+  price:12,
+  stock:60,
+  category:"drinks",
+  image:"images/drinks/chuckie.png",
+  rating:"⭐⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:40,
+  name:"Dutch Mill",
+  price:20,
+  stock:40,
+  category:"drinks",
+  image:"images/drinks/dutchmill.png",
+  rating:"⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:41,
+  name:"Milo Drink",
+  price:25,
+  stock:35,
+  category:"drinks",
+  image:"images/drinks/milo-drink.png",
+  rating:"⭐⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:42,
+  name:"Kopiko Iced Coffee",
+  price:29,
+  stock:50,
+  category:"drinks",
+  image:"images/drinks/kopi-ko-icedcoffee.png",
+  rating:"⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:43,
+  name:"Absolute Water",
+  price:20,
+  stock:100,
+  category:"drinks",
+  image:"images/drinks/absolute-water.png",
+  rating:"⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:44,
+  name:"Summit Water",
+  price:18,
+  stock:90,
+  category:"drinks",
+  image:"images/drinks/summit-water.png",
+  rating:"⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:45,
+  name:"Wilkins Water",
+  price:19,
+  stock:85,
+  category:"drinks",
+  image:"images/drinks/wilkins-water.png",
+  rating:"⭐⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:46,
+  name:"Zesto Orange",
+  price:10,
+  stock:70,
+  category:"drinks",
+  image:"images/drinks/zesto-orange.png",
+  rating:"⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:47,
+  name:"Tang Grape",
+  price:12,
+  stock:50,
+  category:"drinks",
+  image:"images/drinks/tang-grape.png",
+  rating:"⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:48,
+  name:"Lipton Iced Tea",
+  price:30,
+  stock:40,
+  category:"drinks",
+  image:"images/drinks/lipton-icedtea.png",
+  rating:"⭐⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:49,
+  name:"Mug Root Beer",
+  price:35,
+  stock:30,
+  category:"drinks",
+  image:"images/drinks/rootbeer-mug.png",
+  rating:"⭐⭐⭐⭐",
+  qty:1
+},
+
+{
+  id:50,
+  name:"Vitamilk",
+  price:28,
+  stock:45,
+  category:"drinks",
+  image:"images/drinks/vitamilk.png",
   rating:"⭐⭐⭐⭐⭐",
   qty:1
 }
