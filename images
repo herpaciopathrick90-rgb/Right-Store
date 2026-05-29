@@ -1,24 +1,20 @@
-```text
 Right-Store/
 │
 ├── index.html
 │
 ├── images/
 │   │
+│   ├── logo/
+│   │   └── banner.jpg
+│   │
 │   ├── snacks/
 │   │   ├── oishi-prawn-crackers.png
 │   │   ├── piattos-cheese.png
 │   │   ├── nova-multigrain.png
-│   │   ├── chippy-bbq.png
-│   │   ├── skyflakes.png
 │   │   └── etc...
 │   │
-│   ├── drinks/
-│   │   ├── coca-cola.png
-│   │   ├── sprite.png
-│   │   ├── mountain-dew.png
-│   │   └── etc...
-│   │
-│   └── logo/
-│       └── banner.jpg
-```
+│   └── drinks/
+│       ├── coca-cola.png
+│       ├── sprite.png
+│       ├── mountain-dew.png
+│       └── etc...
