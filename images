@@ -1,12 +1,7 @@
+```text
 Right-Store/
 │
 ├── index.html
-├── login.html
-├── register.html
-├── admin.html
-├── robots.txt
-├── sitemap.xml
-├── google48c340a0359b883d.html
 │
 ├── images/
 │   │
@@ -16,53 +11,14 @@ Right-Store/
 │   │   ├── nova-multigrain.png
 │   │   ├── chippy-bbq.png
 │   │   ├── skyflakes.png
-│   │   ├── creamo.png
-│   │   ├── boy-bawang.png
-│   │   ├── clover-chips.png
-│   │   ├── loaded-crackers.png
-│   │   ├── muncher.png
-│   │   ├── cheese-ring.png
-│   │   ├── moby-caramel.png
-│   │   ├── vcut.png
-│   │   ├── roller-coaster.png
-│   │   ├── dingdong-mixednuts.png
-│   │   ├── fudgee-bar.png
-│   │   ├── rebisco-crackers.png
-│   │   ├── hansel-mocha.png
-│   │   ├── presto-peanut.png
-│   │   ├── bingo-orange.png
-│   │   ├── dewberry.png
-│   │   ├── oreo-vanilla.png
-│   │   ├── chips-delight.png
-│   │   ├── crackers-cheese.png
-│   │   └── pretzels.png
+│   │   └── etc...
 │   │
 │   ├── drinks/
 │   │   ├── coca-cola.png
 │   │   ├── sprite.png
-│   │   ├── royal-orange.png
-│   │   ├── c2-green-tea.png
-│   │   ├── pepsi.png
 │   │   ├── mountain-dew.png
-│   │   ├── cobra-energy.png
-│   │   ├── sting-energy.png
-│   │   ├── gatorade-blue.png
-│   │   ├── minute-maid-orange.png
-│   │   ├── nestea-lemon.png
-│   │   ├── yakult.png
-│   │   ├── delight-strawberry.png
-│   │   ├── chuckie.png
-│   │   ├── dutchmill.png
-│   │   ├── milo-drink.png
-│   │   ├── kopi-ko-icedcoffee.png
-│   │   ├── absolute-water.png
-│   │   ├── summit-water.png
-│   │   ├── wilkins-water.png
-│   │   ├── zesto-orange.png
-│   │   ├── tang-grape.png
-│   │   ├── lipton-icedtea.png
-│   │   ├── rootbeer-mug.png
-│   │   └── vitamilk.png
-│
-└── css/
-    └── style.css
+│   │   └── etc...
+│   │
+│   └── logo/
+│       └── banner.jpg
+```
