@@ -2,15 +2,17 @@ Right-Store/
 │
 ├── index.html
 │
-├── images/
-│   │
-│   ├── logo/
-│   │   └── banner.jpg
-│   │
-│   ├── snacks/
-│   │   ├── oishi-prawn-crackers.png
-│   │   └── ...
-│   │
-│   └── drinks/
-│       ├── coca-cola.png
-│       └── ...
+└── images/
+    │
+    ├── logo/
+    │   └── banner.jpg
+    │
+    ├── snacks/
+    │   ├── oishi-prawn-crackers.png
+    │   ├── piattos-cheese.png
+    │   └── ...
+    │
+    └── drinks/
+        ├── coca-cola.png
+        ├── sprite.png
+        └── ...
