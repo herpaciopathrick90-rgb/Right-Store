@@ -9,12 +9,8 @@ Right-Store/
 │   │
 │   ├── snacks/
 │   │   ├── oishi-prawn-crackers.png
-│   │   ├── piattos-cheese.png
-│   │   ├── nova-multigrain.png
-│   │   └── etc...
+│   │   └── ...
 │   │
 │   └── drinks/
 │       ├── coca-cola.png
-│       ├── sprite.png
-│       ├── mountain-dew.png
-│       └── etc...
+│       └── ...
