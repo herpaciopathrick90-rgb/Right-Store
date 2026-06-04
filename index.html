@@ -2151,6 +2151,59 @@ function checkout(){
 
   }
 
+  /* 📧 SEND ORDER EMAIL */
+  let orderList = "";
+
+  cart.forEach(item => {
+
+    orderList +=
+      item.name +
+      " x" +
+      item.cartQty +
+      " - ₱" +
+      (item.price * item.cartQty) +
+      "\n";
+
+  });
+
+  emailjs.send(
+    "service_0gz55uu",
+    "template_dezukjf",
+    {
+      customer_name:
+      localStorage.getItem("username")
+      || "Guest",
+
+      order_details:
+      orderList,
+
+      total_amount:
+      "₱" +
+      cart.reduce(
+        (sum,item) =>
+        sum +
+        (item.price * item.cartQty),
+        0
+      )
+    }
+  )
+  .then(() => {
+
+    console.log(
+      "Order email sent"
+    );
+
+  })
+  .catch(error => {
+
+    console.error(
+      "Email error:",
+      error
+    );
+
+  });
+
+  /* 📜 SAVE ORDER HISTORY */
   let history =
   JSON.parse(
     localStorage.getItem(
@@ -2172,76 +2225,19 @@ function checkout(){
     JSON.stringify(history)
   );
 
+  /* 🛒 CLEAR CART */
   cart = [];
 
   saveCart();
 
   updateCart();
+
   renderHistory();
 
+  /* 🔔 SUCCESS */
   showToast(
     "Checkout successful 🎉"
   );
-
-}
-
-/* 📜 HISTORY */
-function renderHistory(){
-
-  const historyList =
-  document.getElementById(
-    "historyList"
-  );
-
-  let history =
-  JSON.parse(
-    localStorage.getItem(
-      "orderHistory"
-    )
-  ) || [];
-
-  historyList.innerHTML = "";
-
-  history.reverse().forEach(order => {
-
-    let itemsHTML = "";
-
-    order.items.forEach(item => {
-
-      itemsHTML += `
-
-        <div>
-
-          ${item.name}
-          —
-          Qty:
-          ${item.cartQty}
-
-        </div>
-
-      `;
-
-    });
-
-    historyList.innerHTML += `
-
-      <div style="
-        margin-bottom:20px;
-        border-bottom:1px solid #ddd;
-        padding-bottom:10px;
-      ">
-
-        <strong>
-          ${order.date}
-        </strong>
-
-        ${itemsHTML}
-
-      </div>
-
-    `;
-
-  });
 
 }
 
